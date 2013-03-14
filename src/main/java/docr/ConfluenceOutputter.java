@@ -1,0 +1,143 @@
+package docr;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static docr.Controllers.toTitle;
+import static docr.Methods.getComment;
+import static docr.Methods.getCookieValues;
+import static docr.Methods.getHttpMethod;
+import static docr.Methods.getParamComments;
+import static docr.Methods.getPathVariables;
+import static docr.Methods.getRequestHeaders;
+import static docr.Methods.getRequestMappingAsString;
+import static docr.Methods.getRequestParams;
+import static docr.Methods.isWebMethod;
+import static docr.Parameters.getDefaulValue;
+import static docr.Parameters.isRequired;
+import static java.lang.String.format;
+
+import java.io.Writer;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.google.common.base.Function;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaMethod;
+import com.thoughtworks.qdox.model.JavaParameter;
+
+public class ConfluenceOutputter implements Outputter {
+
+	private Writer out;
+
+	public static final ConfluenceOutputter create(Writer out) {
+
+		ConfluenceOutputter co = new ConfluenceOutputter();
+
+		co.out = out;
+
+		return co;
+
+	}
+
+	public void output(List<JavaClass> classes) {
+		try {
+			out.write("{toc}\n\n");
+
+			for (JavaClass cls : classes) {
+
+				out.write(format("h3. %s \n", toTitle(cls)));
+
+				out.write(format("\n %s \n\n", escape(cls.getComment())));
+
+				out.write("|| Resource || URI Structure || Method || Path Variables || Request Parameters || Cookie Values || Request Headers || \n");
+
+				for (JavaMethod m : cls.getMethods()) {
+
+					if (isWebMethod(m)) {
+
+						final Map<String, String> paramComments = getParamComments(m);
+
+						Function<JavaParameter, String> f = new Function<JavaParameter, String>() {
+
+							@Override
+							public String apply(JavaParameter input) {
+								return format("*%s* %s %s %s \\\\ ", input.getName(), ((isRequired(input)) ? "* " : ""), ((!isNullOrEmpty(getDefaulValue(input))) ? format("[%s]", getDefaulValue(input)) : ""), (paramComments.get(input.getName()) != null) ? paramComments.get(input.getName()) : "");
+							}
+
+						};
+
+						// TODO can these be done with Joiners?
+						StringBuilder requestParams = new StringBuilder();
+
+						for (JavaParameter p : getRequestParams(m)) {
+							requestParams.append(f.apply(p));
+						}
+
+						StringBuilder cookieValues = new StringBuilder();
+
+						for (JavaParameter p : getCookieValues(m)) {
+							cookieValues.append(f.apply(p));
+						}
+
+						StringBuilder requestHeaders = new StringBuilder();
+
+						for (JavaParameter p : getRequestHeaders(m)) {
+							requestHeaders.append(f.apply(p));
+						}
+
+						StringBuilder pathVariables = new StringBuilder();
+
+						for (JavaParameter p : getPathVariables(m)) {
+							pathVariables.append(f.apply(p));
+						}
+
+						String comment = escape(getComment(m));
+
+						out.write(format("| %s | %s | %s | %s | %s | %s | %s | \n", comment, escape(getRequestMappingAsString(m)), getHttpMethod(m), escape(pathVariables.toString()), escape(requestParams.toString()), escape(cookieValues.toString()), escape(requestHeaders.toString())));
+
+					}
+
+				}
+
+				out.write("\n\n");
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Replaces null and empty strings with a non-breaking space that Confluence
+	 * understands and replaces line breaks with Confluence line breaks too.
+	 * 
+	 * Confluence uses curly braces to demarcate macros so they need to be
+	 * escaped if they are to be included in {@link PathVariable} elements in
+	 * the final documentation.
+	 */
+	public static String escape(String input) {
+
+		// a crlf rather than &nbsp;
+		String nbsp = " \\\\ ";
+
+		if (isNullOrEmpty(input))
+			return nbsp;
+
+		else {
+
+			input = input.replace("{", "\\{");
+
+			input = input.replace("}", "\\}");
+
+			input = input.replace("\n", nbsp);
+
+			return input;
+
+		}
+
+	}
+
+}
