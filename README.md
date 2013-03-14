@@ -1,0 +1,4 @@
+docr
+====
+
+Documents Spring controllers
