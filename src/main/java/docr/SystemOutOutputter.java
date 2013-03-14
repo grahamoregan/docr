@@ -14,6 +14,14 @@ import com.thoughtworks.qdox.model.JavaParameter;
 
 public class SystemOutOutputter implements Outputter {
 
+	public static final SystemOutOutputter create() {
+
+		SystemOutOutputter outputter = new SystemOutOutputter();
+
+		return outputter;
+
+	}
+
 	@Override
 	public void output(List<JavaClass> classes) {
 
