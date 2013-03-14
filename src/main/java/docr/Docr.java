@@ -46,7 +46,7 @@ public class Docr {
 
 			StringWriter writer = new StringWriter();
 
-			Outputter out = HtmlOutputter.create(writer);
+			Outputter out = SystemOutOutputter.create();
 
 			out.output(controllers);
 
