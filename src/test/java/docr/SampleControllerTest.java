@@ -1,11 +1,11 @@
 package docr;
 
 import static docr.Annotations.getAnnotationValue;
-import static docr.Methods.getCookieValues;
-import static docr.Methods.getRequestHeaders;
-import static docr.Methods.getRequestMapping;
-import static docr.Methods.getRequestParams;
 import static docr.Parameters.isRequired;
+import static docr.spring.Methods.getCookieValues;
+import static docr.spring.Methods.getRequestHeaders;
+import static docr.spring.Methods.getRequestMapping;
+import static docr.spring.Methods.getRequestParams;
 
 import java.io.InputStreamReader;
 import java.util.List;
@@ -18,6 +18,7 @@ import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaParameter;
 
 import docr.annotation.UserlessLogin;
+import docr.spring.Methods;
 
 public class SampleControllerTest extends TestCase {
 

@@ -1,4 +1,4 @@
-package docr;
+package docr.spring;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static docr.Annotations.getAnnotationValue;
@@ -20,6 +20,10 @@ import com.thoughtworks.qdox.model.DocletTag;
 import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaParameter;
 import com.thoughtworks.qdox.model.Type;
+
+import docr.Annotations;
+import docr.Classes;
+import docr.Parameters;
 
 public class Methods {
 

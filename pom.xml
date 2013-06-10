@@ -10,7 +10,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.qdox</groupId>
 			<artifactId>qdox</artifactId>
-			<version>1.12</version>
+			<version>1.12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -33,6 +33,11 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-core</artifactId>
 			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>14.0.1</version>
 		</dependency>
 	</dependencies>
 	<build>

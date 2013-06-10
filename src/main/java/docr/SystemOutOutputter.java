@@ -1,8 +1,8 @@
 package docr;
 
 import static docr.DocletTags.getTitle;
-import static docr.Methods.getHttpMethod;
 import static docr.Parameters.isPathVarible;
+import static docr.spring.Methods.getHttpMethod;
 import static java.lang.String.format;
 
 import java.util.List;
@@ -11,6 +11,8 @@ import com.thoughtworks.qdox.model.Annotation;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaParameter;
+
+import docr.spring.Methods;
 
 public class SystemOutOutputter implements Outputter {
 

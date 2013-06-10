@@ -2,17 +2,17 @@ package docr;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static docr.Controllers.toTitle;
-import static docr.Methods.getComment;
-import static docr.Methods.getCookieValues;
-import static docr.Methods.getHttpMethod;
-import static docr.Methods.getParamComments;
-import static docr.Methods.getPathVariables;
-import static docr.Methods.getRequestHeaders;
-import static docr.Methods.getRequestMappingAsString;
-import static docr.Methods.getRequestParams;
-import static docr.Methods.isWebMethod;
 import static docr.Parameters.getDefaulValue;
 import static docr.Parameters.isRequired;
+import static docr.spring.Methods.getComment;
+import static docr.spring.Methods.getCookieValues;
+import static docr.spring.Methods.getHttpMethod;
+import static docr.spring.Methods.getParamComments;
+import static docr.spring.Methods.getPathVariables;
+import static docr.spring.Methods.getRequestHeaders;
+import static docr.spring.Methods.getRequestMappingAsString;
+import static docr.spring.Methods.getRequestParams;
+import static docr.spring.Methods.isWebMethod;
 import static java.lang.String.format;
 
 import java.io.Writer;

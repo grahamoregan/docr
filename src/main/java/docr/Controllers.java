@@ -17,8 +17,8 @@ public class Controllers {
 
 			String name = cls.getName();
 
-			if (name.endsWith("Controller"))
-				return name.substring(0, name.length() - "Controller".length());
+			if (name.endsWith("Resource"))
+				return name.substring(0, name.length() - "Resource".length());
 
 			return cls.getName();
 		}

@@ -22,7 +22,8 @@ public class Annotations {
 	}
 
 	public static String stripQuotes(String temp) {
-		return (temp.startsWith("\"") && temp.endsWith("\"")) ? temp.substring(1, temp.length() - 1) : temp;
+		return (temp.startsWith("\"") && temp.endsWith("\"")) ? temp.substring(
+				1, temp.length() - 1) : temp;
 	}
 
 	public static boolean isAnnotationTargetRequired(Annotation annotation) {
@@ -44,7 +45,8 @@ public class Annotations {
 	 * @param name
 	 * @return
 	 */
-	public static String getAnnotationParameterValue(Annotation annotation, String name) {
+	public static String getAnnotationParameterValue(Annotation annotation,
+			String name) {
 
 		if (annotation != null) {
 
@@ -78,10 +80,13 @@ public class Annotations {
 
 	public static Annotation getAnnotation(Annotation[] annotations, String name) {
 
-		for (Annotation ant : annotations)
-			if (ant.getType().getJavaClass().getFullyQualifiedName().equalsIgnoreCase(name))
+		for (Annotation ant : annotations) {
+
+			if (ant.getType().getJavaClass().getFullyQualifiedName()
+					.equalsIgnoreCase(name))
 				return ant;
 
+		}
 		return null;
 
 	}
