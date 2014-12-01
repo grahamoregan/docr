@@ -1,30 +1,13 @@
-package docr;
+package docr.outputter;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static docr.Controllers.toTitle;
-import static docr.Parameters.getDefaulValue;
-import static docr.Parameters.isRequired;
-import static docr.spring.Methods.getComment;
-import static docr.spring.Methods.getCookieValues;
-import static docr.spring.Methods.getHttpMethod;
-import static docr.spring.Methods.getParamComments;
-import static docr.spring.Methods.getPathVariables;
-import static docr.spring.Methods.getRequestHeaders;
-import static docr.spring.Methods.getRequestMappingAsString;
-import static docr.spring.Methods.getRequestParams;
-import static docr.spring.Methods.isWebMethod;
-import static java.lang.String.format;
 
 import java.io.Writer;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.google.common.base.Function;
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaMethod;
-import com.thoughtworks.qdox.model.JavaParameter;
+import docr.Resource;
 
 public class ConfluenceOutputter implements Outputter {
 
@@ -40,7 +23,8 @@ public class ConfluenceOutputter implements Outputter {
 
 	}
 
-	public void output(List<JavaClass> classes) {
+	public void output(List<Resource> resources) {
+		/*
 		try {
 			out.write("{toc}\n\n");
 
@@ -107,6 +91,7 @@ public class ConfluenceOutputter implements Outputter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 
 	}
 

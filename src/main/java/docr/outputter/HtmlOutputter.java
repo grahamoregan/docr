@@ -1,33 +1,13 @@
-package docr;
+package docr.outputter;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static docr.Controllers.toTitle;
-import static docr.Parameters.getDefaulValue;
-import static docr.Parameters.isRequired;
-import static docr.spring.Methods.getComment;
-import static docr.spring.Methods.getCookieValues;
-import static docr.spring.Methods.getHttpMethod;
-import static docr.spring.Methods.getParamComments;
-import static docr.spring.Methods.getPathVariables;
-import static docr.spring.Methods.getRequestHeaders;
-import static docr.spring.Methods.getRequestMappingAsString;
-import static docr.spring.Methods.getRequestParams;
-import static docr.spring.Methods.isWebMethod;
 
 import java.io.Writer;
 import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.GET;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaMethod;
-import com.thoughtworks.qdox.model.JavaParameter;
+import docr.Resource;
 
 public class HtmlOutputter implements Outputter {
 
@@ -47,8 +27,8 @@ public class HtmlOutputter implements Outputter {
 	/**
 	 * Convert the classes to maps so they can be used in Velocity
 	 */
-	public void output(List<JavaClass> classes) {
-
+	public void output(List<Resource> resources) {
+/*
 		try {
 
 			for (JavaClass cls : classes) {
@@ -114,7 +94,7 @@ public class HtmlOutputter implements Outputter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+*/
 	}
 
 	/**

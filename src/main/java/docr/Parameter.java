@@ -1,4 +1,4 @@
-package docr.jersey;
+package docr;
 
 import com.google.common.base.Objects;
 
@@ -11,6 +11,8 @@ public class Parameter {
 	private Boolean required;
 
 	private String comment;
+
+	private String type;
 
 	@Override
 	public String toString() {
@@ -47,6 +49,14 @@ public class Parameter {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

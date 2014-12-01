@@ -1,11 +1,11 @@
 package docr;
 
 import static docr.Annotations.getAnnotationValue;
-import static docr.Parameters.isRequired;
 import static docr.spring.Methods.getCookieValues;
 import static docr.spring.Methods.getRequestHeaders;
 import static docr.spring.Methods.getRequestMapping;
 import static docr.spring.Methods.getRequestParams;
+import static docr.spring.Parameters.isRequired;
 
 import java.io.InputStreamReader;
 import java.util.List;
@@ -18,7 +18,9 @@ import com.thoughtworks.qdox.model.JavaMethod;
 import com.thoughtworks.qdox.model.JavaParameter;
 
 import docr.annotation.UserlessLogin;
+import docr.outputter.SystemOutOutputter;
 import docr.spring.Methods;
+import docr.spring.Parameters;
 
 public class SampleControllerTest extends TestCase {
 
@@ -26,8 +28,10 @@ public class SampleControllerTest extends TestCase {
 
 	public void setUp() {
 
-		Docr docr = Docr.create();
-		controllers = docr.getController(new InputStreamReader(this.getClass().getResourceAsStream("SampleController.java")));
+		SpringSourceProcessor docr = new SpringSourceProcessor();
+
+		// used .code as extension to work around Eclipse wanting to ignore the file
+		docr.run(new InputStreamReader(this.getClass().getResourceAsStream("SampleController.code")), new SystemOutOutputter());
 
 	}
 

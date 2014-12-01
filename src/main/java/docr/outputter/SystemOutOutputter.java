@@ -1,18 +1,8 @@
-package docr;
-
-import static docr.DocletTags.getTitle;
-import static docr.Parameters.isPathVarible;
-import static docr.spring.Methods.getHttpMethod;
-import static java.lang.String.format;
+package docr.outputter;
 
 import java.util.List;
 
-import com.thoughtworks.qdox.model.Annotation;
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaMethod;
-import com.thoughtworks.qdox.model.JavaParameter;
-
-import docr.spring.Methods;
+import docr.Resource;
 
 public class SystemOutOutputter implements Outputter {
 
@@ -25,8 +15,9 @@ public class SystemOutOutputter implements Outputter {
 	}
 
 	@Override
-	public void output(List<JavaClass> classes) {
+	public void output(List<Resource> resources) {
 
+		/*
 		for (JavaClass cls : classes) {
 
 			Annotation ant = Classes.getRequestMapping(cls);
@@ -64,6 +55,7 @@ public class SystemOutOutputter implements Outputter {
 			}
 
 		}
+		*/
 
 	}
 

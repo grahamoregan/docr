@@ -1,9 +1,11 @@
-package docr;
+package docr.spring;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 import com.thoughtworks.qdox.model.Annotation;
 import com.thoughtworks.qdox.model.JavaParameter;
+
+import docr.Annotations;
 
 public class Parameters {
 

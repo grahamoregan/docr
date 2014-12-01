@@ -23,7 +23,6 @@ import com.thoughtworks.qdox.model.Type;
 
 import docr.Annotations;
 import docr.Classes;
-import docr.Parameters;
 
 public class Methods {
 
@@ -115,6 +114,12 @@ public class Methods {
 
 	}
 
+	/**
+	 * TODO move, this is useful elsewhere
+	 * @param m
+	 * @param c
+	 * @return
+	 */
 	public static List<JavaParameter> getMatchingAnnotations(JavaMethod m, Class<? extends Object> c) {
 
 		List<JavaParameter> params = new ArrayList<JavaParameter>();

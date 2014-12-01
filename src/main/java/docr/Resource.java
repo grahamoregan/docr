@@ -1,10 +1,16 @@
-package docr.jersey;
+package docr;
 
 import java.util.List;
+
+import org.springframework.stereotype.Controller;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
+/**
+ * Represents a Jersey resource or a Spring {@link Controller}
+ *
+ */
 public class Resource {
 
 	private List<Method> methods = Lists.newArrayList();
