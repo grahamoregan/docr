@@ -14,16 +14,15 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		String dir = System.getProperty("dir", "/Users/graham/Development/source/JeemTV/registration/registration-service/");
+		String dir = System.getProperty("dir", "/Users/graham/Development/source/depop/wallet/application/wallet-service/");
 		String out = System.getProperty("out", "/tmp/");
 
-		logger.info("Reading Spring controllers from " + dir);
+		logger.info("Reading resources from " + dir);
 
 		if (!isNullOrEmpty(out))
 			System.out.println("Outputting the content to " + out);
 
-		new JerseySourceProcessor().run("/Users/graham/Development/source/JeemTV/registration/registration-service/", GollumOutputter.create("Registration-API", out));
-		new JerseySourceProcessor().run("/Users/graham/Development/source/JeemTV/moderation/moderation-service/", GollumOutputter.create("Moderation-API", out));
+		new JerseySourceProcessor().run(dir, GollumOutputter.create("Test-API", out));
 
 	}
 
